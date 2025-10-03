@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Optimize for SSG + ISR (no output: 'export' to keep ISR functionality)
+  // Disable output file tracing to avoid Windows permission issues with .next/trace
+  outputFileTracing: false,
   images: {
     remotePatterns: [
       {
@@ -13,9 +15,6 @@ const nextConfig = {
   // Enable experimental features for better performance
   experimental: {
     ppr: false, // Keep false for stability
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
   },
   // Configure for optimal SSG + ISR
   async rewrites() {
