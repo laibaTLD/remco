@@ -98,11 +98,11 @@ export default function FAQSection({
             {/* FAQ Items - Each with self-contained question and answer */}
             <div className="space-y-3">
               {questions.map((faq, index) => (
-                <div key={index} className="border transition-all" style={{ borderColor: `${primaryColor}40` }}>
+                <div key={index} className="border" style={{ borderColor: `${primaryColor}40` }}>
                   {/* Question Button */}
                   <button
                     onClick={() => toggleQuestion(index)}
-                    className="w-full text-left px-4 py-3 transition-all hover:scale-[1.01]"
+                    className="w-full text-left px-4 py-3"
                     style={{
                       backgroundColor: index === openIndex ? `${primaryColor}10` : 'transparent',
                       color: textColor
@@ -113,7 +113,7 @@ export default function FAQSection({
                         {index + 1}. {faq.question.toUpperCase()}
                       </span>
                       <span 
-                        className="text-xl transition-transform duration-300"
+                        className="text-xl"
                         style={{
                           transform: index === openIndex ? 'rotate(45deg)' : 'rotate(0deg)',
                           color: primaryColor
@@ -126,7 +126,7 @@ export default function FAQSection({
                   
                   {/* Answer - Directly beneath the question */}
                   <div 
-                    className="overflow-hidden transition-all duration-300 ease-in-out"
+                    className="overflow-hidden"
                     style={{
                       maxHeight: index === openIndex ? '500px' : '0px',
                       opacity: index === openIndex ? 1 : 0

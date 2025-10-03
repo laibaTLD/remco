@@ -12,7 +12,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = () => {
         {/* Simple spinner */}
         <div className="w-16 h-16 mx-auto mb-8 relative">
           <div className="absolute inset-0 border-2 border-gray-800 rounded-full"></div>
-          <div className="absolute inset-0 border-2 border-transparent border-t-cyan-400 rounded-full animate-spin"></div>
+          <div className="absolute inset-0 border-2 border-transparent border-t-cyan-400 rounded-full"></div>
         </div>
 
         {/* Loading text */}
@@ -25,8 +25,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = () => {
           {[0, 1, 2].map((i) => (
             <div
               key={i}
-              className="w-1 h-1 bg-cyan-400 rounded-full animate-pulse"
-              style={{ animationDelay: `${i * 0.3}s` }}
+              className="w-1 h-1 bg-cyan-400 rounded-full"
             />
           ))}
         </div>

@@ -63,7 +63,7 @@ export default function BusinessOverviewSection(_: Props) {
           <div className="mt-auto mb-1 md:mb-2">
             <button
               type="submit"
-              className="w-[82px] h-[82px] md:w-[118px] md:h-[118px] rounded-full bg-[#ff9f2e] text-white font-medium shadow-[0_10px_25px_rgba(0,0,0,0.15)] hover:scale-105 active:scale-95 transition-transform"
+              className="w-[82px] h-[82px] md:w-[118px] md:h-[118px] rounded-full bg-[#ff9f2e] text-white font-medium shadow-[0_10px_25px_rgba(0,0,0,0.15)] hover:scale-105 active:scale-95"
             >
               Send
             </button>

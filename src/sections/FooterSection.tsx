@@ -132,7 +132,7 @@ export default function FooterSection({
                 <li key={idx}>
                   <a
                     href={item.url}
-                    className="text-lg md:text-xl underline-offset-4 hover:underline transition-colors"
+                    className="text-lg md:text-xl underline-offset-4 hover:underline"
                     style={{ color: primary }}
                     target="_blank"
                     rel="noreferrer"

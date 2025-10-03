@@ -117,7 +117,7 @@ export default async function Home() {
       seoData={landingPageData.seoData}
       landingPageData={landingPageData}
     >
-      <div className="animate-fade-in-up">
+      <div>
         <main>
           {landingPageData.content.hero && (
             <HeroSection 

@@ -194,7 +194,7 @@ export default function ContactSection({ title, description, showMap = true, bus
 
               <button
                 type="submit"
-                className="btn-primary w-full py-4 px-6 rounded-lg font-semibold text-white transition-colors"
+                className="btn-primary w-full py-4 px-6 rounded-lg font-semibold text-white"
               >
                 Send Message
               </button>

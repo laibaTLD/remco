@@ -15,62 +15,18 @@ export function useScrollAnimation<T extends HTMLElement = HTMLDivElement>(optio
     triggerOnce = true
   } = options;
 
-  const [isVisible, setIsVisible] = useState(false);
+  // Always return isVisible as true to disable scroll animations
+  const [isVisible, setIsVisible] = useState(true);
   const ref = useRef<T>(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          if (triggerOnce) {
-            observer.unobserve(entry.target);
-          }
-        } else if (!triggerOnce) {
-          setIsVisible(false);
-        }
-      },
-      {
-        threshold,
-        rootMargin,
-      }
-    );
-
-    const currentRef = ref.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, [threshold, rootMargin, triggerOnce]);
-
+  // No intersection observer needed since animations are disabled
   return { ref, isVisible };
 }
 
 export function useStaggeredAnimation(itemCount: number, delay: number = 100) {
-  const [visibleItems, setVisibleItems] = useState<number[]>([]);
+  // Show all items immediately without delays
+  const visibleItems = Array.from({ length: itemCount }, (_, i) => i);
   const { ref, isVisible } = useScrollAnimation();
-
-  useEffect(() => {
-    if (isVisible) {
-      const timeouts: NodeJS.Timeout[] = [];
-      
-      for (let i = 0; i < itemCount; i++) {
-        const timeout = setTimeout(() => {
-          setVisibleItems(prev => [...prev, i]);
-        }, i * delay);
-        timeouts.push(timeout);
-      }
-
-      return () => {
-        timeouts.forEach(clearTimeout);
-      };
-    }
-  }, [isVisible, itemCount, delay]);
 
   return { ref, visibleItems, isVisible };
 }

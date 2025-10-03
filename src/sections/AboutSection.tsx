@@ -140,7 +140,7 @@ export default function AboutSection({
                 <div className="pt-4">
                   <a
                     href={ctaButton.href}
-                    className="inline-flex items-center gap-3 px-8 py-4 font-extralight text-sm tracking-wide uppercase border transition-all hover:scale-105"
+                    className="inline-flex items-center gap-3 px-8 py-4 font-extralight text-sm tracking-wide uppercase border hover:scale-105"
                     style={{ 
                       borderColor: primaryColor,
                       color: textColor,

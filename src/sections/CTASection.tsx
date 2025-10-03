@@ -46,7 +46,7 @@ const CTASection: React.FC<CTASectionProps> = ({ data, theme, images }) => {
               {data.ctaButton && (
                 <a
                   href={data.ctaButton.href}
-                  className="inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-semibold shadow-sm transition-colors"
+                  className="inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-semibold shadow-sm"
                   style={{ backgroundColor: buttonBg, color: buttonText }}>
                   {data.ctaButton.label || 'Get in touch'}
                 </a>

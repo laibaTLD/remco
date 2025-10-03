@@ -20,7 +20,6 @@ const RRC_CUSTOM_STYLES = `
   /* Customizing the appearance for a dark theme and better visibility */
   .carousel .control-arrow, .carousel.carousel-slider .control-arrow {
     opacity: 0.8;
-    transition: opacity 0.3s ease;
   }
   
   .carousel .control-arrow:hover, .carousel.carousel-slider .control-arrow:hover {
@@ -31,7 +30,6 @@ const RRC_CUSTOM_STYLES = `
     background: #f1e6e6; /* Light dot color */
     box-shadow: none;
     opacity: 0.4;
-    transition: opacity 0.3s ease;
   }
   .carousel .control-dots .dot.selected {
     background: #4F46E5; /* Primary accent color for active dot */
@@ -39,11 +37,6 @@ const RRC_CUSTOM_STYLES = `
     transform: scale(1.2);
   }
   /* Remove default legend background; we'll render our own centered caption */
-  /* Animation styles from original component */
-  @keyframes slideInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes slideInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
-  .g-slide-up { animation: slideInUp 0.7s ease-out forwards; }
-  .g-slide-left { animation: slideInLeft 0.7s ease-out forwards; }
 `;
 
 export default function GallerySection({
@@ -57,9 +50,8 @@ export default function GallerySection({
       (img) => img.category === "gallery" || img.slotName?.includes("gallery")
     );
     if (provided.length > 0) return provided;
-    // Fallback images (using the user's provided list)
+    // Fallback images (using the user's original fallback images data is preserved here)
     return [
-      // ... (The user's original fallback images data is preserved here)
       {
         id: "1",
         slotName: "gallery",
@@ -117,8 +109,6 @@ export default function GallerySection({
       },
     ];
   }, [images]);
-
-  // No header/description in full-screen variant
 
   return (
     <section id="gallery" className="p-0 bg-gray-900 text-[#f1e6e6] relative min-h-screen">

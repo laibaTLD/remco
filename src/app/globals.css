@@ -1,5 +1,44 @@
 @import "tailwindcss";
 
+/* Standard Typography System */
+.text-heading-1 {
+  @apply text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900;
+}
+
+.text-heading-2 {
+  @apply text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900;
+}
+
+.text-heading-3 {
+  @apply text-xl sm:text-2xl md:text-3xl font-medium text-gray-900;
+}
+
+.text-body-large {
+  @apply text-lg sm:text-xl text-gray-700 leading-relaxed;
+}
+
+.text-body {
+  @apply text-base sm:text-lg text-gray-700 leading-relaxed;
+}
+
+.text-body-small {
+  @apply text-sm sm:text-base text-gray-600;
+}
+
+.text-caption {
+  @apply text-xs sm:text-sm text-gray-500 uppercase tracking-wide;
+}
+
+/* Banner/Hero title styling - matches home page */
+.text-banner-title {
+  @apply text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold uppercase text-center drop-shadow-[0_0_15px_rgba(0,0,0,0.8)];
+}
+
+/* Standard font family for all text */
+* {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -488,119 +527,6 @@ body {
   background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light));
 }
 
-/* Custom animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes glow {
-
-  0%,
-  100% {
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
-  }
-
-  50% {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-/* Animation utility classes */
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.animate-fade-in-left {
-  animation: fadeInLeft 0.6s ease-out;
-}
-
-.animate-fade-in-right {
-  animation: fadeInRight 0.6s ease-out;
-}
-
-.animate-scale-in {
-  animation: scaleIn 0.5s ease-out;
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-glow {
-  animation: glow 2s ease-in-out infinite;
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
-}
 
 /* Hover effects */
 .hover-lift {
@@ -622,29 +548,7 @@ body {
 }
 
 .loading-dots::after {
-  content: '';
-  animation: loading-dots 1.5s infinite;
-}
-
-@keyframes loading-dots {
-
-  0%,
-  20% {
-    content: '';
-  }
-
-  40% {
-    content: '.';
-  }
-
-  60% {
-    content: '..';
-  }
-
-  80%,
-  100% {
-    content: '...';
-  }
+  content: '...';
 }
 
 /* Luxury Hero Section Styles */
@@ -678,16 +582,6 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: luxuryShimmer 4s ease-in-out infinite;
-}
-
-@keyframes luxuryShimmer {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
 }
 
 .luxury-hero-subtitle {
@@ -753,18 +647,6 @@ body {
   left: 100%;
 }
 
-/* Enhanced floating animation */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  33% {
-    transform: translateY(-10px) rotate(1deg);
-  }
-  66% {
-    transform: translateY(-5px) rotate(-1deg);
-  }
-}
 
 /* Luxury gradient backgrounds */
 .bg-luxury-gradient {
@@ -777,16 +659,6 @@ body {
     var(--salon-cream) 100%
   );
   background-size: 400% 400%;
-  animation: gradientShift 8s ease infinite;
-}
-
-@keyframes gradientShift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
 }
 
 /* Curtain reveal animation */
@@ -823,20 +695,6 @@ body {
 }
 
 /* Enhanced animations for luxury feel */
-@keyframes luxuryPulse {
-  0%, 100% {
-    opacity: 0.4;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.05);
-  }
-}
-
-.luxury-pulse {
-  animation: luxuryPulse 3s ease-in-out infinite;
-}
 
 /* Sophisticated hover effects */
 .luxury-hover {
@@ -939,39 +797,6 @@ body {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-@keyframes luxuryNavbarSlideIn {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  60% {
-    transform: translateY(5px);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes luxuryNavbarPulse {
-  0%, 100% {
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.15),
-      0 0 0 1px rgba(255, 255, 255, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2),
-      0 0 20px var(--theme-primary-color-glow, rgba(212, 165, 116, 0.1));
-  }
-  50% {
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.15),
-      0 0 0 1px rgba(255, 255, 255, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2),
-      0 0 30px var(--theme-primary-color-glow, rgba(212, 165, 116, 0.2)),
-      0 0 50px var(--theme-secondary-color-glow, rgba(232, 180, 184, 0.1));
-  }
-}
-
 .luxury-navbar-container {
   display: flex;
   align-items: center;
@@ -1019,36 +844,8 @@ body {
   width: 0;
   transition: width 0.3s ease;
 }
-
 .minimal-nav-link:hover .minimal-nav-underline {
   width: 100%;
-}
-
-@keyframes luxuryButtonSlide {
-  0%, 100% {
-    transform: translateX(0);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  50% {
-    transform: translateX(2px);
-    box-shadow: 
-      0 6px 16px rgba(0, 0, 0, 0.15),
-      0 0 12px var(--theme-primary-color-glow, rgba(212, 165, 116, 0.1));
-  }
-}
-
-@keyframes luxuryCTAButtonPulse {
-  0%, 100% {
-    box-shadow: 
-      0 6px 20px rgba(0, 0, 0, 0.2),
-      0 0 15px var(--theme-primary-color-glow, rgba(212, 165, 116, 0.2));
-  }
-  50% {
-    box-shadow: 
-      0 8px 25px rgba(0, 0, 0, 0.25),
-      0 0 25px var(--theme-primary-color-glow, rgba(212, 165, 116, 0.3)),
-      0 0 35px var(--theme-secondary-color-glow, rgba(232, 180, 184, 0.2));
-  }
 }
 
 /* Minimal CTA Button */
@@ -1104,7 +901,6 @@ body {
 /* Luxury Logo */
 .luxury-logo-container {
   flex-shrink: 0;
-  animation: luxuryLogoEntrance 1s ease-out 0.2s both;
 }
 
 .luxury-logo-link {
@@ -1163,16 +959,6 @@ body {
   transition: all 0.3s ease;
 }
 
-@keyframes luxuryLogoEntrance {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
 
 /* Luxury Mobile Button */
 .luxury-mobile-button {
@@ -1252,37 +1038,21 @@ body {
     var(--salon-cream) 100%
   );
   background-size: 400% 400%;
-  animation: gradientShift 8s ease infinite;
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(20px);
+  padding: 2rem;
 }
 
-.luxury-mobile-content {
-  position: relative;
-  width: 100%;
+.luxury-mobile-menu-content {
   max-width: 600px;
   padding: 2rem;
   text-align: center;
-  animation: luxuryMobileEntrance 0.8s ease-out;
-}
-
-@keyframes luxuryMobileEntrance {
-  0% {
-    opacity: 0;
-    transform: scale(0.9) translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
 }
 
 .luxury-mobile-logo {
   margin-bottom: 3rem;
-  animation: luxuryMobileLogoEntrance 1s ease-out 0.2s both;
 }
 
 .luxury-mobile-logo-frame {
@@ -1312,16 +1082,6 @@ body {
   letter-spacing: -0.01em;
 }
 
-@keyframes luxuryMobileLogoEntrance {
-  0% {
-    opacity: 0;
-    transform: scale(0.8) translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
 
 .luxury-mobile-nav {
   display: flex;
@@ -1343,7 +1103,6 @@ body {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   backdrop-filter: blur(20px);
-  animation: luxuryMobileButtonGlow 4.5s ease-in-out infinite;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
@@ -1391,23 +1150,6 @@ body {
   left: 100%;
 }
 
-@keyframes luxuryMobileButtonGlow {
-  0%, 100% {
-    box-shadow: 
-      0 2px 8px rgba(0, 0, 0, 0.04),
-      0 0 6px var(--theme-primary-color-glow, rgba(212, 165, 116, 0.04));
-  }
-  50% {
-    box-shadow: 
-      0 2px 8px rgba(0, 0, 0, 0.04),
-      0 0 12px var(--theme-primary-color-glow, rgba(212, 165, 116, 0.08)),
-      0 0 18px var(--theme-secondary-color-glow, rgba(232, 180, 184, 0.04));
-  }
-}
-
-.luxury-mobile-cta-container {
-  animation: luxuryMobileCTAButtonGlow 3s ease-in-out infinite;
-}
 
 .luxury-mobile-cta-button {
   position: relative;
@@ -1464,25 +1206,9 @@ body {
   left: 100%;
 }
 
-@keyframes luxuryMobileCTAButtonGlow {
-  0%, 100% {
-    box-shadow: 
-      0 8px 25px var(--theme-primary-color-shadow, rgba(212, 165, 116, 0.3)),
-      0 4px 12px rgba(0, 0, 0, 0.06),
-      0 0 15px var(--theme-primary-color-glow, rgba(212, 165, 116, 0.2));
-  }
-  50% {
-    box-shadow: 
-      0 8px 25px var(--theme-primary-color-shadow, rgba(212, 165, 116, 0.3)),
-      0 4px 12px rgba(0, 0, 0, 0.06),
-      0 0 30px var(--theme-primary-color-glow, rgba(212, 165, 116, 0.3)),
-      0 0 45px var(--theme-secondary-color-glow, rgba(232, 180, 184, 0.2));
-  }
-}
-
 /* Luxury Mobile Decorations */
 .luxury-mobile-decorations {
-  position: absolute;
+  z-index: -1;
   top: 0;
   left: 0;
   right: 0;
@@ -1490,48 +1216,31 @@ body {
   pointer-events: none;
   overflow: hidden;
 }
-
 .luxury-mobile-decoration {
   position: absolute;
   border-radius: 50%;
   background: rgba(212, 165, 116, 0.1);
-  animation: luxuryFloat 6s ease-in-out infinite;
 }
 
 .luxury-mobile-decoration-1 {
   width: 100px;
   height: 100px;
-  top: 10%;
   left: 10%;
-  animation-delay: 0s;
 }
 
 .luxury-mobile-decoration-2 {
-  width: 60px;
   height: 60px;
   top: 20%;
   right: 15%;
-  animation-delay: 2s;
 }
 
 .luxury-mobile-decoration-3 {
   width: 80px;
   height: 80px;
-  bottom: 20%;
+  bottom: 25%;
   left: 20%;
-  animation-delay: 4s;
 }
 
-@keyframes luxuryFloat {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-    opacity: 0.3;
-  }
-  50% {
-    transform: translateY(-20px) rotate(180deg);
-    opacity: 0.6;
-  }
-}
 
 /* Responsive Design */
 @media (max-width: 1024px) {

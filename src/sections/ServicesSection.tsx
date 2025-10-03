@@ -90,7 +90,7 @@ export default function ServicesSection({
           {/* Left Arrow */}
           <button
             onClick={scrollPrev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/40 hover:bg-black/60 rounded-full flex items-center justify-center text-white transition-all duration-300 opacity-80 hover:opacity-100"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/40 hover:bg-black/60 rounded-full flex items-center justify-center text-white opacity-80 hover:opacity-100"
             aria-label="Previous slide"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,7 +101,7 @@ export default function ServicesSection({
           {/* Right Arrow */}
           <button
             onClick={scrollNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/40 hover:bg-black/60 rounded-full flex items-center justify-center text-white transition-all duration-300 opacity-80 hover:opacity-100"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/40 hover:bg-black/60 rounded-full flex items-center justify-center text-white opacity-80 hover:opacity-100"
             aria-label="Next slide"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -126,7 +126,7 @@ export default function ServicesSection({
                           src={img.imageUrl}
                           alt={altText}
                           fill
-                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                          className="object-cover"
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           quality={90}
                           priority={index < 3}
@@ -161,7 +161,7 @@ export default function ServicesSection({
                 <button
                   key={index}
                   onClick={() => scrollTo(index)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-200 ${
+                  className={`w-2.5 h-2.5 rounded-full ${
                     index === selectedIndex 
                       ? 'bg-white w-6 scale-110' 
                       : 'bg-white/30 hover:bg-white/50'

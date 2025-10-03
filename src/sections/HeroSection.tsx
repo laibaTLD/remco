@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useEffect, useState, useMemo, useRef } from 'react';
 
 declare type ImageType = { 
@@ -69,10 +68,6 @@ export default function HeroSection({
     return imgs;
   }, [displayImages]);
 
-  // Animation hooks for text elements
-  const titleAnimation = useScrollAnimation<HTMLHeadingElement>({ threshold: 0.3 });
-  const subtitleAnimation = useScrollAnimation<HTMLHeadingElement>({ threshold: 0.3 });
-  const ctaAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.3 });
 
   useEffect(() => {
     setIsLoaded(true);
@@ -103,17 +98,9 @@ export default function HeroSection({
 
   const primaryRgb = useMemo(() => hexToRgb(themeData.primaryColor), [themeData.primaryColor]);
 
-  // Custom styles for animations and dynamic theming
+  // Custom styles for image hover effects only
   const styles = `
-    @keyframes slideInRight { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes slideInLeft { from { opacity: 0; transform: translateX(-100px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes slideInUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes scaleIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
     @keyframes spin180 { from { transform: rotateZ(-180deg); } to { transform: rotateZ(0deg); } }
-    
-    .slide-in-left { animation: slideInLeft 0.8s ease-out forwards; }
-    .slide-in-up { animation: slideInUp 0.8s ease-out forwards; }
-    .scale-in { animation: scaleIn 0.8s ease-out forwards; }
     
     .hero-title {
       font-size: clamp(3.5rem, 10vw, 8rem);
@@ -130,8 +117,6 @@ export default function HeroSection({
       text-transform: uppercase;
     }
     
-    
-
     .hero-panel {
       transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 420ms ease;
       transform-style: preserve-3d;
@@ -158,7 +143,7 @@ export default function HeroSection({
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: styles }} />
-      <section className="relative overflow-hidden min-h-screen bg-gray-900 flex items-center justify-center">
+    <section className="relative overflow-hidden min-h-screen bg-gray-900 flex items-center justify-center">
 
         {/* Background Grid */}
         <div className="absolute inset-0 z-0">
@@ -198,7 +183,7 @@ export default function HeroSection({
         </div>
 
         {/* Content Overlay */}
-        <div className=" min-h-screen flex items-center justify-center text-center w-full pointer-events-none">
+        <div className="relative z-20 min-h-screen flex items-center justify-center text-center w-full pointer-events-none">
           <div className="container mx-auto px-6 max-w-4xl ">
             
           
@@ -206,9 +191,7 @@ export default function HeroSection({
             {/* Main Title */}
             <div className="overflow-hidden">
                <h1 
-                 ref={titleAnimation.ref}
-                 className={`text-9xl font-extrabold uppercase text-[#f1e6e6] relative drop-shadow-[0_0_15px_rgba(0,0,0,0.8)] ${titleAnimation.isVisible ? 'slide-in-up' : 'opacity-0'}`}
-                 style={{ animationDelay: '0.4s' }}
+                 className="text-9xl font-extrabold uppercase text-[#f1e6e6] relative drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]"
                >
                 {title}
               </h1>
@@ -216,33 +199,31 @@ export default function HeroSection({
 
 
            {/* Subtitle */}
-            <div className={`overflow-hidden ${subtitleAnimation.isVisible ? 'slide-in-left' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
-               <h2 ref={subtitleAnimation.ref} className="text-[2rem] font-extralight uppercase  text-[#f1e6e6] drop-shadow-[0_0_10px_rgba(0,0,0,0.8)]">
+            <div>
+               <h2 className="text-[2rem] font-extralight uppercase  text-[#f1e6e6] drop-shadow-[0_0_10px_rgba(0,0,0,0.8)]">
                 {subtitle}
               </h2>
             </div>
 
             {/* CTA Button */}
-            <div 
-              ref={ctaAnimation.ref}
-              className={`pt-8 ${ctaAnimation.isVisible ? 'scale-in' : 'opacity-0'}`}
-              style={{ animationDelay: '1.2s' }}
-            >
-              <a 
-                href={ctaButton.href} 
-                className="group hover:bg-[#f1e6e6] border border-[#f1e6e6] hover:text-[#2D3748] pointer-events-auto inline-flex items-center gap-4 px-6 py-3 text-xs no-underline uppercase rounded text-center transition-all duration-300 font-extralight"
-              >
-                <span>{ctaButton.label}</span>
-                <svg 
-                  className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-2" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
+            {ctaButton && ctaButton.href && ctaButton.label && (
+              <div className="pt-8 relative z-30">
+                <a 
+                  href={ctaButton.href} 
+                  className="group hover:bg-[#f1e6e6] border-2 border-[#f1e6e6] hover:text-[#2D3748] text-[#f1e6e6] pointer-events-auto inline-flex items-center gap-4 px-8 py-4 text-sm no-underline uppercase rounded-lg text-center font-medium transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl backdrop-blur-sm bg-black/20"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-            </div>
+                  <span>{ctaButton.label}</span>
+                  <svg 
+                    className="w-4 h-4 transition-transform group-hover:translate-x-1" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
+            )}
 
           </div>
         </div>
